@@ -1,12 +1,15 @@
 <script setup>
 import TheWelcome from "@/components/TheWelcome.vue";
-import { ref } from "vue";
 
-let message = ref("Hello World!");
+let message = $ref("Hello World!");
 
-setTimeout(() => {
-  message.value = "I have been changed";
-}, 2000);
+// setTimeout(() => {
+//   message = "I have been changed";
+// }, 2000);
+
+let doSomething = () => {
+  alert("Doing it now");
+};
 </script>
 
 <template>
@@ -15,6 +18,7 @@ setTimeout(() => {
     <p>{{ message }}</p>
     <p>
       <input type="text" v-model="message" />
+      <button @click="doSomething">Click Me</button>
     </p>
   </main>
 </template>
