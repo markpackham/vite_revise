@@ -1,6 +1,6 @@
 <script>
 import TheWelcome from "@/components/TheWelcome.vue";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 export default {
   components: { TheWelcome },
@@ -10,8 +10,10 @@ export default {
       alert("Hi there");
     });
 
+    let message = ref("Hello World!");
+
     return {
-      message: "Hello World",
+      message,
     };
   },
 
@@ -31,5 +33,8 @@ export default {
   <main>
     <TheWelcome />
     <p>{{ message }}</p>
+    <p>
+      <input type="text" v-model="message" />
+    </p>
   </main>
 </template>
