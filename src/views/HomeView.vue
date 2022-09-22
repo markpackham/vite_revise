@@ -16,9 +16,11 @@ let { flash } = useFlash();
 import { ref } from "vue";
 
 let food = ref(localStorage.getItem("food"));
+let age = ref(localStorage.getItem("age"));
 
-function write() {
-  localStorage.setItem('food', food.value);
+function write(key, value) {
+  localStorage.setItem(key, value);
+
 }
 </script>
 
@@ -26,7 +28,11 @@ function write() {
   <div>
     <main>
       <p>
-        What is your fav food? <input type="text" v-model="food" @input="write" />
+        What is your fav food? <input type="text" v-model="food" @input="write('food',food)" />
+      </p>
+
+      <p>
+        How old are you <input type="text" v-model="age" @input="write('age',age)" />
       </p>
     </main>
   </div>
