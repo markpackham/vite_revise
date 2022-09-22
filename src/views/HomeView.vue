@@ -3,8 +3,7 @@ import { ref, watch } from "vue";
 import { useStorage } from "@/composables/useStorage"
 
 let food = useStorage('food', 'salad');
-
-
+let age = useStorage('age', '80');
 
 // let food = ref(localStorage.getItem("food"));
 // let age = ref(localStorage.getItem("age"));
@@ -35,9 +34,9 @@ let food = useStorage('food', 'salad');
         What is your fav food? <input type="text" v-model="food" />
       </p>
 
-      <!-- <p>
+      <p>
         How old are you <input type="text" v-model="age" />
-      </p> -->
+      </p>
     </main>
   </div>
 </template>
