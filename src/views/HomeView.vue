@@ -5,6 +5,8 @@ import { useStorage } from "@/composables/useStorage"
 let food = useStorage('food', 'salad');
 let age = useStorage('age', '80');
 
+useStorage('obj', { one: 'one' })
+
 // let food = ref(localStorage.getItem("food"));
 // let age = ref(localStorage.getItem("age"));
 
