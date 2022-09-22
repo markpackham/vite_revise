@@ -5,7 +5,11 @@ import { useStorage } from "@/composables/useStorage"
 let food = useStorage('food', 'salad');
 let age = useStorage('age', '80');
 
-useStorage('obj', { one: 'one' })
+let obj = useStorage('obj', { one: 'one' })
+
+setTimeout(() => {
+  obj.value.one = 'Changed!'
+}, 3000)
 
 // let food = ref(localStorage.getItem("food"));
 // let age = ref(localStorage.getItem("age"));
