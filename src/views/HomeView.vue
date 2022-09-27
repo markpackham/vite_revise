@@ -1,20 +1,6 @@
 <script setup>
-import { ref } from "vue";
+import TabbableTextarea from "../components/TabbableTextarea.vue";
 
-let textarea = ref(null);
-
-function onTabPress(e) {
-
-  let tarea = e.target;
-
-  let val = tarea.value,
-    start = tarea.selectionStart,
-    end = tarea.selectionEnd;
-
-  tarea.value = val.substring(0, start) + "\t" + val.substring(end);
-
-  tarea.selectionStart = tarea.selectionEnd = start + 1;
-}
 
 </script>
 
@@ -22,7 +8,7 @@ function onTabPress(e) {
   <main>
     <div>
       <form>
-        <textarea @keydown.tab.prevent="onTabPress" style="width:100%; height:300px;">Hello</textarea>
+        <TabbableTextarea style="width:100%; height:400px;" />
       </form>
     </div>
   </main>
