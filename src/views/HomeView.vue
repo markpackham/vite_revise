@@ -5,20 +5,18 @@ let textarea = ref(null);
 
 function onKeyDown(e) {
 
-
   let tarea = textarea.value;
 
-  if (e.keyCode === 9) {
-    let val = tarea.value,
-      start = tarea.selectionStart,
-      end = tarea.selectionEnd;
+  let val = tarea.value,
+    start = tarea.selectionStart,
+    end = tarea.selectionEnd;
 
-    tarea.value = val.substring(0, start) + "\t" + val.substring(end);
+  tarea.value = val.substring(0, start) + "\t" + val.substring(end);
 
-    tarea.selectionStart = tarea.selectionEnd = start + 1;
+  tarea.selectionStart = tarea.selectionEnd = start + 1;
 
-    e.preventDefault();
-  }
+  e.preventDefault();
+
 
 }
 
@@ -28,7 +26,7 @@ function onKeyDown(e) {
   <main>
     <div>
       <form>
-        <textarea ref="textarea" @keydown="onKeyDown" style="width:100%; height:300px;">Hello</textarea>
+        <textarea ref="textarea" @keydown.tab="onKeyDown" style="width:100%; height:300px;">Hello</textarea>
       </form>
     </div>
   </main>
