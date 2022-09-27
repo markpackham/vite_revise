@@ -3,7 +3,7 @@ import { onMounted, ref } from "vue";
 
 let textarea = ref(null);
 
-function onKeyDown(e) {
+function onTabPress(e) {
 
   let tarea = textarea.value;
 
@@ -14,10 +14,6 @@ function onKeyDown(e) {
   tarea.value = val.substring(0, start) + "\t" + val.substring(end);
 
   tarea.selectionStart = tarea.selectionEnd = start + 1;
-
-  e.preventDefault();
-
-
 }
 
 </script>
@@ -26,7 +22,7 @@ function onKeyDown(e) {
   <main>
     <div>
       <form>
-        <textarea ref="textarea" @keydown.tab="onKeyDown" style="width:100%; height:300px;">Hello</textarea>
+        <textarea ref="textarea" @keydown.tab.prevent="onTabPress" style="width:100%; height:300px;">Hello</textarea>
       </form>
     </div>
   </main>
