@@ -1,11 +1,11 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 
 let textarea = ref(null);
 
 function onTabPress(e) {
 
-  let tarea = textarea.value;
+  let tarea = e.target;
 
   let val = tarea.value,
     start = tarea.selectionStart,
@@ -22,7 +22,7 @@ function onTabPress(e) {
   <main>
     <div>
       <form>
-        <textarea ref="textarea" @keydown.tab.prevent="onTabPress" style="width:100%; height:300px;">Hello</textarea>
+        <textarea @keydown.tab.prevent="onTabPress" style="width:100%; height:300px;">Hello</textarea>
       </form>
     </div>
   </main>
