@@ -3,25 +3,24 @@ import { onMounted, ref } from "vue";
 
 let textarea = ref(null);
 
-onMounted(() => {
-  textarea.value.addEventListener("keydown", (e) => {
+function onKeyDown(e) {
 
-    let tarea = textarea.value;
 
-    if (e.keyCode === 9) {
-      let val = tarea.value,
-        start = tarea.selectionStart,
-        end = tarea.selectionEnd;
+  let tarea = textarea.value;
 
-      tarea.value = val.substring(0, start) + "\t" + val.substring(end);
+  if (e.keyCode === 9) {
+    let val = tarea.value,
+      start = tarea.selectionStart,
+      end = tarea.selectionEnd;
 
-      tarea.selectionStart = tarea.selectionEnd = start + 1;
+    tarea.value = val.substring(0, start) + "\t" + val.substring(end);
 
-      e.preventDefault();
-    }
-  })
-})
+    tarea.selectionStart = tarea.selectionEnd = start + 1;
 
+    e.preventDefault();
+  }
+
+}
 
 </script>
 
@@ -29,7 +28,7 @@ onMounted(() => {
   <main>
     <div>
       <form>
-        <textarea ref="textarea" style="width:100%; height:300px;">Hello</textarea>
+        <textarea ref="textarea" @keydown="onKeyDown" style="width:100%; height:300px;">Hello</textarea>
       </form>
     </div>
   </main>
