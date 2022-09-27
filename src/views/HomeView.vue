@@ -5,6 +5,11 @@ import TabbableTextarea from "../components/TabbableTextarea.vue";
 
 
 let comment = ref('Test Value');
+
+setTimeout(() => {
+  comment.value = "This worked!"
+}, 2000)
+
 </script>
 
 <template>
