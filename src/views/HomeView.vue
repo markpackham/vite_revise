@@ -1,29 +1,36 @@
 <script setup>
-
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 let textarea = ref(null);
 
-textarea.addEventListener("keydown", (e) => {
-  if (e.keyCode === 9) {
-    let val = textarea.value,
-      start = textarea.selectionStart,
-      end = textarea.selectionEnd;
+onMounted(() => {
+  textarea.value.addEventListener("keydown", (e) => {
 
-    textarea.value = val.substring(0, start) + "\t" + val.substring(end);
+    let tarea = textarea.value;
 
-    textarea.selectionStart = textarea.selectionEnd = start + 1;
+    if (e.keyCode === 9) {
+      let val = tarea.value,
+        start = tarea.selectionStart,
+        end = tarea.selectionEnd;
 
-    e.preventDefault();
-  }
+      tarea.value = val.substring(0, start) + "\t" + val.substring(end);
+
+      tarea.selectionStart = tarea.selectionEnd = start + 1;
+
+      e.preventDefault();
+    }
+  })
 })
+
 
 </script>
 
 <template>
-  <div>
-    <form>
-      <textarea ref="textarea" style="width: 100%; height:300px">Hello</textarea>
-    </form>
-  </div>
+  <main>
+    <div>
+      <form>
+        <textarea ref="textarea" style="width:100%; height:300px;">Hello</textarea>
+      </form>
+    </div>
+  </main>
 </template>
