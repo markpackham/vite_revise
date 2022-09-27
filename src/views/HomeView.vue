@@ -1,66 +1,29 @@
 <script setup>
-import { ref, watch } from "vue";
-import { useStorage } from "@/composables/useStorage"
 
-let food = useStorage('food', 'salad');
-let age = useStorage('age', '80');
+import { ref } from "vue";
 
-let obj = useStorage('obj', { one: 'one' })
+let textarea = ref(null);
 
-setTimeout(() => {
-  obj.value.one = 'Changed!'
-}, 3000)
+textarea.addEventListener("keydown", (e) => {
+  if (e.keyCode === 9) {
+    let val = textarea.value,
+      start = textarea.selectionStart,
+      end = textarea.selectionEnd;
 
-// let food = ref(localStorage.getItem("food"));
-// let age = ref(localStorage.getItem("age"));
+    textarea.value = val.substring(0, start) + "\t" + val.substring(end);
 
-// watch(food, (val) => {
-//   write('food', val)
-// })
+    textarea.selectionStart = textarea.selectionEnd = start + 1;
 
-// watch(age, (val) => {
-//   write('age', val)
-// })
-
-
-// function write(key, value) {
-//   localStorage.setItem(key, value);
-// }
-
-// setTimeout(() => {
-//   food.value = 'changed'
-// }, 2000)
+    e.preventDefault();
+  }
+})
 
 </script>
 
 <template>
   <div>
-    <main>
-      <p>
-        What is your fav food? <input type="text" v-model="food" />
-      </p>
-
-      <p>
-        How old are you <input type="text" v-model="age" />
-      </p>
-    </main>
+    <form>
+      <textarea ref="textarea" style="width: 100%; height:300px">Hello</textarea>
+    </form>
   </div>
 </template>
-
-
-
-
-
-<!-- <script setup>
-import { useFlash } from "@/composables/useFlash";
-
-let { flash } = useFlash();
-</script>
-
-<template>
-  <main>
-    <p>
-      <button @click="flash('Test', 'It Works', 'success')">Click Me</button>
-    </p>
-  </main>
-</template> -->
